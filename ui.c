@@ -19,7 +19,7 @@ void showStartScreen() {
         printf("  1 to 3 food items appear randomly at the same time\n");
         setColor(8);  printf("    X"); setColor(7); printf("  (Gray)  : Obstacle, avoid hitting!\n");
         printf("  Every time your score increases by 5, the nth time will generate n obstacles (each lasts 15 seconds)\n");
-        printf("  Hit wall, yourself, or obstacle → Game Over\n\n");
+        printf("  Hit wall, yourself, or obstacle -> Game Over\n\n");
         printf("Please select:\n");
         printf("  1. Start Game\n");
         printf("  2. Exit\n\n");
@@ -96,9 +96,15 @@ void drawMap() {
             printf("%*sFood types: ", infoX - WIDTH, "");
             for (int i = 0; i < foodCount; i++) {
                 if (food[i].active) {
-                    if (food[i].type == FOOD_NORMAL) { setColor(12); printf("* "); }
-                    else if (food[i].type == FOOD_SPEED_UP) { setColor(14); printf("@ "); }
-                    else if (food[i].type == FOOD_SHRINK) { setColor(13); printf("& "); }
+                    if (food[i].type == FOOD_NORMAL) {
+                        setColor(12); printf("*"); setColor(7); printf(" (Normal) ");
+                    }
+                    else if (food[i].type == FOOD_SPEED_UP) {
+                        setColor(14); printf("@"); setColor(7); printf(" (Speed Up) ");
+                    }
+                    else if (food[i].type == FOOD_SHRINK) {
+                        setColor(13); printf("&"); setColor(7); printf(" (Shrink) ");
+                    }
                 }
             }
             setColor(7);
